@@ -11,8 +11,14 @@
         <isset name="price" value="${product.price}" scope="page" />
         <isif condition="${product.productType === 'set'}">
             <isinclude template="product/components/pricing/setPrice" />
-        <iselse>
-            <isinclude template="product/components/pricing/main" />
+            <iselse>
+                <isinclude template="product/components/pricing/main" />
+        </isif>
+
+        <isif condition="${pdict.discountPercentage}">
+            <div class="discount-percentage">
+                Discounts: ${pdict.discountPercentage}% off
+            </div>
         </isif>
 
         <isif condition="${pdict.display.ratings !== false}">

@@ -1,0 +1,35 @@
+'use strict';
+
+var server = require('server');
+
+var productHelpers = require('*/cartridge/scripts/helpers/productHelpers');
+
+server.extend(module.superModule);
+
+server.append('Show', function (req, res, next) {
+    
+    var discountPercentage = null;
+
+    var product = res.getViewData().product;
+
+    if (product && product.price && product.price.sales) {
+
+        console.log('product.price.list: ' + product.price.list);
+
+        console.log('product.price.sales: ' + product.price.sales);
+        
+        discountPercentage = productHelpers.calculatePercentageOff(product.price.list, product.price.sales);
+
+    }
+
+    res.setViewData({
+
+        discountPercentage: discountPercentage
+
+    });
+
+    return next();
+
+});
+
+module.exports = server.exports();
