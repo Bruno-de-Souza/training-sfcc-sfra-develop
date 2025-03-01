@@ -7,19 +7,22 @@ var productHelpers = require('*/cartridge/scripts/helpers/productHelpers');
 server.extend(module.superModule);
 
 server.append('Show', function (req, res, next) {
-    
-    var discountPercentage = null;
 
+    var discountPercentage = null;
+    
     var product = res.getViewData().product;
 
-    if (product && product.price && product.price.sales) {
-
-        console.log('product.price.list: ' + product.price.list);
-
-        console.log('product.price.sales: ' + product.price.sales);
+    if (product.price.list && product.price.sales) {
         
-        discountPercentage = productHelpers.calculatePercentageOff(product.price.list, product.price.sales);
+        var standardPrice = product.price.list.value;
+        
+        var salePrice = product.price.sales.value;
 
+        if (typeof standardPrice === 'number' && typeof salePrice === 'number') {
+
+            discountPercentage = productHelpers.calculatePercentageOff(standardPrice, salePrice);
+
+        }
     }
 
     res.setViewData({
@@ -29,7 +32,7 @@ server.append('Show', function (req, res, next) {
     });
 
     return next();
-
+    
 });
 
 module.exports = server.exports();
