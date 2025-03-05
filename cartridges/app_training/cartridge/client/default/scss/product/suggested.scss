@@ -1,0 +1,23 @@
+.suggested-products {
+    display: flex;
+    flex-wrap: wrap; // Allows items to wrap to the next line
+    gap: 16px; // Space between items
+    padding: 16px;
+
+    .product-tile {
+        flex: 1 1 calc(25% - 16px); // Each item takes up 25% of the container width minus the gap
+        text-align: center;
+        box-sizing: border-box; // Ensures padding and border are included in the width
+
+        h2 {
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 8px;
+        }
+    }
+}

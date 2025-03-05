@@ -53,7 +53,7 @@ server.get('Show', cache.applyPromotionSensitiveCache, consentTracking.consent, 
             res.render(showProductPageHelperResult.template, {
                 product: showProductPageHelperResult.product,
                 addToCartUrl: showProductPageHelperResult.addToCartUrl,
-                resources: showProductPageHelperResult.resources,
+                resources: showProductPageHelperResult.resources,   
                 breadcrumbs: showProductPageHelperResult.breadcrumbs,
                 canonicalUrl: showProductPageHelperResult.canonicalUrl,
                 schemaData: showProductPageHelperResult.schemaData
