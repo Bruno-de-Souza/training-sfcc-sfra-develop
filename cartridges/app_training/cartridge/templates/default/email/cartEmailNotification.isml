@@ -1,0 +1,11 @@
+<!-- cartEmailNotification.isml -->
+<isreplace name="body">
+    <p>Dear ${customerName},</p>
+    <p>Thank you for adding a new item to your cart. Here are the details:</p>
+    <ul>
+        <li>Product Name: ${productName}</li>
+        <li>Quantity: ${quantity}</li>
+        <li>Price: ${price}</li>
+    </ul>
+    <p>Happy Shopping!</p>
+</isreplace>
