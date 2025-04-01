@@ -488,6 +488,33 @@ function getProductSearchHit(apiProduct) {
     return hit;
 }
 
+/**
+* Calculates the percentage discount between a standard price and a sale price.
+*
+* This function computes the percentage off by comparing the standard price
+* with the sale price. It returns the discount percentage as a whole number
+* string. If either the standard price or the sale price is not provided,
+* the function returns null.
+*
+* @param {number} standardPrice - The original price of the product before any discounts.
+* @param {number} salePrice - The discounted price of the product.
+* @returns {string|null} The percentage off as a string rounded to the nearest whole number,
+*                        or null if the input prices are invalid.
+*/
+function calculatePercentageOff(standardPrice, salePrice) {
+
+    if (!standardPrice || !salePrice) {
+
+        return null;
+
+    } 
+
+    var total = ((standardPrice - salePrice) / standardPrice * 100); 
+
+    return total.toFixed(0);
+
+}
+
 module.exports = {
     getOptionValues: getOptionValues,
     getOptions: getOptions,
@@ -503,5 +530,6 @@ module.exports = {
     getAllBreadcrumbs: getAllBreadcrumbs,
     getResources: getResources,
     getPageDesignerProductPage: getPageDesignerProductPage,
-    getProductSearchHit: getProductSearchHit
+    getProductSearchHit: getProductSearchHit,
+    calculatePercentageOff: calculatePercentageOff
 };
